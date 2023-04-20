@@ -1,5 +1,5 @@
 plugins {
-    alias libs.plugins.android.application
+    alias libs.plugins.android.library
     alias libs.plugins.kotlin.android
 }
 
@@ -7,11 +7,8 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.priscilla.suggestionsapp"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,18 +33,13 @@ android {
 
 dependencies {
 
-    implementation(project(path: ':data'))
-
     testImplementation libs.test.junit
     androidTestImplementation libs.bundles.android.test
 
     implementation libs.androidx.corektx
-    implementation libs.bundles.navigation
-    implementation libs.androidx.appcompat
-    implementation libs.android.material
-    implementation libs.androidx.constraintlayout
-}
-
-configurations.implementation {
-    exclude group: 'com.intellij', module: 'annotations'
+    implementation libs.bundles.coroutines
+    implementation libs.bundles.lifecycle
+    implementation libs.koin.android
+    implementation libs.bundles.networking
+    implementation libs.bundles.room
 }
