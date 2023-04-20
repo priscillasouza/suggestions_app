@@ -17,6 +17,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField ("String", "API_URL", "\"http://www.boredapi.com/api/\"")
+        }
+        debug {
+            buildConfigField ("String", "API_URL", "\"http://www.boredapi.com/api/\"")
         }
     }
     compileOptions {
@@ -42,4 +47,6 @@ dependencies {
     implementation libs.koin.android
     implementation libs.bundles.networking
     implementation libs.bundles.room
+    implementation libs.koin.android
+
 }
