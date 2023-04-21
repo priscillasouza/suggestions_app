@@ -2,6 +2,7 @@ package com.priscilla.suggestionsapp
 
 import android.app.Application
 import com.priscilla.suggestionsapp.data.di.apiModule
+import com.priscilla.suggestionsapp.data.di.daoModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,7 +17,8 @@ class Application: Application() {
             androidLogger(Level.NONE)
             androidContext(this@Application)
             modules(
-                apiModule
+                apiModule,
+                daoModule
             )
         }
     }
