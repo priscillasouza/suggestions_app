@@ -18,3 +18,4 @@ dependencyResolutionManagement {
 rootProject.name = "SuggestionsApp"
 include ':app'
 include ':data'
+include ':activity-suggestion'
