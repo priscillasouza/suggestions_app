@@ -1,0 +1,20 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_tool_bar">Sugestões de atividades</string>
+    <string name="text_chip_education">Education</string>
+    <string name="text_chip_recreational">Recreational</string>
+    <string name="text_chip_cooking">Cooking</string>
+    <string name="text_chip_busywork">Busywork</string>
+    <string name="text_chip_diy">Diy</string>
+    <string name="text_chip_social">Social</string>
+    <string name="text_chip_charity">Charity</string>
+    <string name="text_chip_music">Music</string>
+    <string name="text_chip_relaxation">Relaxation</string>
+    <string name="text_view_acessibility">Acessibility:</string>
+    <string name="text_view_participants">Participants:</string>
+    <string name="text_button_reject">Recusar</string>
+    <string name="text_button_acept">Aceitar</string>
+    <string name="text_view_ongoing_activities">Atividades em andamento</string>
+    <string name="text_view_completed_activities">Atividades concluídas</string>
+</resources>
