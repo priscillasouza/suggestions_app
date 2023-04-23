@@ -43,7 +43,7 @@ class ActivityFragment : Fragment() {
             lifecycleScope.launch {
                 kotlin.runCatching {
                     repeatOnLifecycle(Lifecycle.State.STARTED) {
-                        getActivity.collect {
+                        stateActivityRandom.collect {
                             when (it) {
                                 is Loading -> showLoading(true)
                                 is Success -> bindingActivityModel(it.activityModel)
@@ -76,6 +76,18 @@ class ActivityFragment : Fragment() {
             textViewParticipantsLabel.text = activityModel.participants.toString()
             textViewPrice.text = activityModel.price.formatCurrencyToBr()
             setClicksCardActivity(activityModel)
+            setClickButtonsCardActivity(activityModel)
+        }
+    }
+
+    private fun setClickButtonsCardActivity(activityModel: ActivityModel) {
+        binding.apply {
+            buttonReject.setOnClickListener {
+                activityViewModel.getActivity()
+            }
+            buttonAccept.setOnClickListener {
+                activityViewModel.acceptActivity(activityModel)
+            }
         }
     }
 

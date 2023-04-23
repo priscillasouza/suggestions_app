@@ -8,25 +8,36 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import java.util.*
 
 class ActivityViewModel(
     private val activityRepository: IActivityRepository,
 ) : ViewModel() {
 
-    private var _getActivity = MutableStateFlow<ActivityState>(ActivityState.Empty)
-    val getActivity: StateFlow<ActivityState> = _getActivity
+    private var _stateActivityRandom = MutableStateFlow<ActivityState>(ActivityState.Empty)
+    val stateActivityRandom: StateFlow<ActivityState> = _stateActivityRandom
 
     fun getActivity() {
-        _getActivity.value = ActivityState.Loading
+        _stateActivityRandom.value = ActivityState.Loading
         viewModelScope.launch {
             activityRepository.getActivity()
                 .catch { exception ->
                     exception.printStackTrace()
-                    _getActivity.value = ActivityState.Error("Ocorreu uma falha")
+                    _stateActivityRandom.value = ActivityState.Error("Ocorreu uma falha")
                 }.collect {
-                _getActivity.value = ActivityState.Success(it)
+                _stateActivityRandom.value = ActivityState.Success(it)
             }
-            _getActivity.value = ActivityState.Loaded
+            _stateActivityRandom.value = ActivityState.Loaded
+        }
+    }
+
+    fun acceptActivity(activityModel: ActivityModel) {
+        viewModelScope.launch {
+            try {
+                activityRepository.saveActivity(activityModel.copy(startTime = Date()))
+            }catch (e:Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

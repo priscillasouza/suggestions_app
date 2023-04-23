@@ -49,7 +49,7 @@ android-test = ["android-test-expresso", "android-test-junit"]
 coroutines = ["androidx-coroutines-android", "androidx-coroutines-core"]
 lifecycle = ["androidx-lifecycle-viewmodel-ktx", "androidx-lifecycle-common-java8", "androidx-lifecycle-runtime-ktx"]
 networking = ["retrofit", "retrofit-converter-gson", "gson", "okhttp", "okhttp-logging-interceptor"]
-room = ["androidx-room-runtime", "androidx-room-compiler", "androidx-room-ktx"]
+room = ["androidx-room-runtime", "androidx-room-ktx"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "application" }
