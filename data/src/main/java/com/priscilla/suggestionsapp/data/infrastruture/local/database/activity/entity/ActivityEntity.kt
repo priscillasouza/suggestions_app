@@ -15,7 +15,13 @@ data class ActivityEntity(
     val link: String,
     @PrimaryKey
     val key: String,
-    val status: String? = null,
+    val status: Status? = null,
     val startTime: Date? = null,
     val endTime: Date? = null
 )
+
+enum class Status(val value: String) {
+    STATUS_PROGRESS("andamento"),
+    STATUS_GIV_UP("desistencia"),
+    STATUS_COMPLETED("realizada")
+}

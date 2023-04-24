@@ -13,7 +13,7 @@ const val DB_NAME = "activity_db"
     version = 1,
     exportSchema = true
 )
-@TypeConverters(BigDecimalConverter::class, DateConverter::class)
+@TypeConverters(BigDecimalConverter::class, DateConverter::class, StatusConverter::class)
 abstract class SuggestionsActivityDatabase : RoomDatabase() {
 
     abstract fun activityDao(): ActivityDAO

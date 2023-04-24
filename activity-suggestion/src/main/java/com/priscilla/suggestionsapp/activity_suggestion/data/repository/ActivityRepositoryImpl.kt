@@ -1,5 +1,6 @@
 package com.priscilla.suggestionsapp.activity_suggestion.data.repository
 
+import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapEntityToModel
 import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapModelToEntity
 import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapResponseToModel
 import com.priscilla.suggestionsapp.activity_suggestion.domain.repository.IActivityRepository
@@ -8,12 +9,14 @@ import com.priscilla.suggestionsapp.data.infrastruture.local.database.activity.A
 import com.priscilla.suggestionsapp.data.infrastruture.remote.api.SuggestionsActivityAPI
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class ActivityRepositoryImpl(
     private var activityApi: SuggestionsActivityAPI,
     private var activityDao: ActivityDAO,
     private var mapResponseToModel: MapResponseToModel,
     private var mapModelToEntity: MapModelToEntity,
+    private var mapEntityToModel: MapEntityToModel
 ) : IActivityRepository {
 
     override fun getActivity(): Flow<ActivityModel> {
@@ -27,6 +30,12 @@ class ActivityRepositoryImpl(
     override suspend fun saveActivity(activityModel: ActivityModel) {
         mapModelToEntity.transform(activityModel).also {
             activityDao.saveActivity(it)
+        }
+    }
+
+    override fun getProgressAcitivity(): Flow<List<ActivityModel>> {
+        return activityDao.getProgressActivity().map {
+            mapEntityToModel.transform(it)
         }
     }
 }

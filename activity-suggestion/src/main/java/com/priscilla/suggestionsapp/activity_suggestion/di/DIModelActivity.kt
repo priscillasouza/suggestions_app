@@ -1,5 +1,6 @@
 package com.priscilla.suggestionsapp.activity_suggestion.di
 
+import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapEntityToModel
 import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapModelToEntity
 import com.priscilla.suggestionsapp.activity_suggestion.data.mapper.MapResponseToModel
 import com.priscilla.suggestionsapp.activity_suggestion.data.repository.ActivityRepositoryImpl
@@ -16,7 +17,7 @@ val activityModule = module {
     }
 
     single<IActivityRepository>(named("ActivityRepository")) {
-        ActivityRepositoryImpl(get(), get(), get(), get())
+        ActivityRepositoryImpl(get(), get(), get(), get(), get())
     }
 
     single {
@@ -25,5 +26,9 @@ val activityModule = module {
 
     single {
         MapModelToEntity()
+    }
+
+    single {
+        MapEntityToModel()
     }
 }

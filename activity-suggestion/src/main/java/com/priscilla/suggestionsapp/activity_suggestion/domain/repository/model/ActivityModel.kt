@@ -11,7 +11,13 @@ data class ActivityModel(
     val price: BigDecimal,
     val link: String,
     val key: String,
-    val status: String? = null,
+    var status: Status? = null,
     val startTime: Date? = null,
-    val endTime: Date? = null
+    val endTime: Date? = null,
 )
+
+enum class Status(val value: String) {
+    STATUS_PROGRESS("andamento"),
+    STATUS_GIV_UP("desistencia"),
+    STATUS_COMPLETED("realizada")
+}

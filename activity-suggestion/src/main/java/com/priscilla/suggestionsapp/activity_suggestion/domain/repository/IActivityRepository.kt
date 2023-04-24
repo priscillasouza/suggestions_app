@@ -8,4 +8,6 @@ interface IActivityRepository {
     fun getActivity(): Flow<ActivityModel>
 
     suspend fun saveActivity(activityModel: ActivityModel)
+
+    fun getProgressAcitivity(): Flow<List<ActivityModel>>
 }

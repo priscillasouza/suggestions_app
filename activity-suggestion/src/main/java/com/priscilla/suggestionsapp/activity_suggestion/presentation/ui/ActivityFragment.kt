@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.priscilla.suggestionsapp.activity_suggestion.databinding.FragmentActivityBinding
 import com.priscilla.suggestionsapp.activity_suggestion.domain.repository.model.ActivityModel
 import com.priscilla.suggestionsapp.activity_suggestion.extensions.formatCurrencyToBr
+import com.priscilla.suggestionsapp.activity_suggestion.presentation.adapter.ListProgressActivityAdapter
 import com.priscilla.suggestionsapp.activity_suggestion.presentation.viewmodel.ActivityViewModel
 import com.priscilla.suggestionsapp.activity_suggestion.presentation.viewmodel.ActivityViewModel.ActivityState.*
 import kotlinx.coroutines.launch
@@ -22,6 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 class ActivityFragment : Fragment() {
 
     private lateinit var binding: FragmentActivityBinding
+    private lateinit var listProgressActivityAdapter: ListProgressActivityAdapter
     private val activityViewModel: ActivityViewModel by activityViewModel()
 
     override fun onCreateView(
@@ -35,7 +38,9 @@ class ActivityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activityViewModel.getActivity()
+        activityViewModel.getProgressActivity()
         onObserver()
+        setAdpaterListProgressActivity()
     }
 
     private fun onObserver() {
@@ -52,6 +57,19 @@ class ActivityFragment : Fragment() {
                                 else -> {}
                             }
                         }
+                    }
+                }
+            }
+
+            lifecycleScope.launchWhenStarted {
+                stateListProgressActivity.collect {
+                    when (it) {
+                        is ActivityViewModel.ListActivityState.Loading -> showLoading(true)
+                        is ActivityViewModel.ListActivityState.Success -> listAdapter(it.listActivityModel)
+                        is ActivityViewModel.ListActivityState.Error -> showError(it.message)
+                        is ActivityViewModel.ListActivityState.Loaded -> showLoading(false)
+                        is ActivityViewModel.ListActivityState.Empty -> {}
+                        else -> {}
                     }
                 }
             }
@@ -86,7 +104,10 @@ class ActivityFragment : Fragment() {
                 activityViewModel.getActivity()
             }
             buttonAccept.setOnClickListener {
-                activityViewModel.acceptActivity(activityModel)
+                activityViewModel.apply {
+                    acceptActivity(activityModel)
+                    getActivity()
+                }
             }
         }
     }
@@ -94,8 +115,8 @@ class ActivityFragment : Fragment() {
     private fun setClicksCardActivity(activityModel: ActivityModel) {
         binding.apply {
             cardActivitySuggestion.apply {
-                var click: View.OnClickListener? = null
-                var visibility: Int = View.GONE
+                val click: View.OnClickListener?
+                val visibility: Int
                 if (activityModel.link.isNotBlank()) {
                     visibility = View.VISIBLE
                     click = View.OnClickListener {
@@ -112,5 +133,17 @@ class ActivityFragment : Fragment() {
                 imageViewLink.visibility = visibility
             }
         }
+    }
+
+    private fun setAdpaterListProgressActivity() {
+        binding.recyclerViewListProgressActivities.apply {
+            listProgressActivityAdapter = ListProgressActivityAdapter()
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = listProgressActivityAdapter
+        }
+    }
+
+    private fun listAdapter(list: List<ActivityModel>) {
+        listProgressActivityAdapter.setList(list)
     }
 }
