@@ -44,6 +44,16 @@ class ActivityViewModel(
         }
     }
 
+    fun setActivityGiveUp(activityModel: ActivityModel) {
+        try {
+            viewModelScope.launch {
+                activityRepository.update(activityModel.copy(status = Status.STATUS_GIV_UP, endTime = Date()))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     fun getProgressActivity() {
         viewModelScope.launch {
             _stateListProgressActivity.value = ListActivityState.Loading
@@ -51,7 +61,7 @@ class ActivityViewModel(
                 .catch { exception ->
                     exception.printStackTrace()
                     _stateListProgressActivity.value =
-                        ListActivityState.Error("Ocorreu uma falha ao listar as atividades concluídas")
+                        ListActivityState.Error("Ocorreu uma falha ao listar as atividades em andamento")
                 }.collect {
                     if (it.isEmpty()) {
                         _stateListProgressActivity.value = ListActivityState.Empty

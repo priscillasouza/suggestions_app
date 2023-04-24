@@ -9,5 +9,7 @@ interface IActivityRepository {
 
     suspend fun saveActivity(activityModel: ActivityModel)
 
+    suspend fun update(activityModel: ActivityModel)
+
     fun getProgressAcitivity(): Flow<List<ActivityModel>>
 }

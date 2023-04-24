@@ -13,13 +13,14 @@ class ListProgressActivityAdapter :
     RecyclerView.Adapter<ListProgressActivityAdapter.ActivityViewHolder>() {
 
     private var progressActivityList = arrayListOf<ActivityModel>()
+    private var onClickButtonGivUp: ((ActivityModel) -> Unit?)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val binding =
             ProgressActivitiesItemBinding.inflate(LayoutInflater.from(parent.context),
                 parent,
                 false)
-        return ActivityViewHolder(binding)
+        return ActivityViewHolder(binding, onClickButtonGivUp)
     }
 
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
@@ -39,8 +40,13 @@ class ListProgressActivityAdapter :
         }
     }
 
+    fun setOnClickButtonGivUp(run: ((ActivityModel) -> Unit?)?) {
+        onClickButtonGivUp = run
+    }
+
     class ActivityViewHolder(
         private val layout: ProgressActivitiesItemBinding,
+        private val onClickButtonGivUp: ((ActivityModel) -> Unit?)?
     ) :
         RecyclerView.ViewHolder(layout.root) {
         fun onBind(activityModel: ActivityModel) {
@@ -51,6 +57,11 @@ class ListProgressActivityAdapter :
                 textViewParticipantsLabel.text = activityModel.participants.toString()
                 textViewPrice.text = activityModel.price.formatCurrencyToBr()
                 textViewStartTimeLabel.text = activityModel.startTime?.differStartTime()
+                cardItemListProgressActivity.apply {
+                    buttonGiveUp.setOnClickListener {
+                        onClickButtonGivUp?.invoke(activityModel)
+                    }
+                }
             }
         }
     }

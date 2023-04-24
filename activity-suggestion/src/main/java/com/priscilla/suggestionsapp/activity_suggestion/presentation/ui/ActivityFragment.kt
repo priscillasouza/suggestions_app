@@ -51,7 +51,7 @@ class ActivityFragment : Fragment() {
                         stateActivityRandom.collect {
                             when (it) {
                                 is Loading -> showLoading(true)
-                                is Success -> bindingActivityModel(it.activityModel)
+                                is Success -> setBindingActivityModel(it.activityModel)
                                 is Error -> showError(it.message)
                                 is Loaded -> showLoading(false)
                                 else -> {}
@@ -65,7 +65,7 @@ class ActivityFragment : Fragment() {
                 stateListProgressActivity.collect {
                     when (it) {
                         is ActivityViewModel.ListActivityState.Loading -> showLoading(true)
-                        is ActivityViewModel.ListActivityState.Success -> listAdapter(it.listActivityModel)
+                        is ActivityViewModel.ListActivityState.Success -> listAdapterProgressActivity(it.listActivityModel)
                         is ActivityViewModel.ListActivityState.Error -> showError(it.message)
                         is ActivityViewModel.ListActivityState.Loaded -> showLoading(false)
                         is ActivityViewModel.ListActivityState.Empty -> {}
@@ -86,7 +86,7 @@ class ActivityFragment : Fragment() {
             .show()
     }
 
-    private fun bindingActivityModel(activityModel: ActivityModel) {
+    private fun setBindingActivityModel(activityModel: ActivityModel) {
         binding.apply {
             textViewActivityType.text = activityModel.type
             textViewActivityDescription.text = activityModel.activity
@@ -140,10 +140,13 @@ class ActivityFragment : Fragment() {
             listProgressActivityAdapter = ListProgressActivityAdapter()
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = listProgressActivityAdapter
+            listProgressActivityAdapter.setOnClickButtonGivUp {
+                activityViewModel.setActivityGiveUp(activityModel = it)
+            }
         }
     }
 
-    private fun listAdapter(list: List<ActivityModel>) {
+    private fun listAdapterProgressActivity(list: List<ActivityModel>) {
         listProgressActivityAdapter.setList(list)
     }
 }

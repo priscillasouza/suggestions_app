@@ -8,7 +8,10 @@ import kotlinx.coroutines.flow.Flow
 interface ActivityDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveActivity(activity: ActivityEntity)
+    fun saveActivity(activityEntity: ActivityEntity)
+
+    @Update
+    fun update(activityEntity: ActivityEntity)
 
     @Query("SELECT * FROM activity_table WHERE status = 'STATUS_PROGRESS'")
     fun getProgressActivity(): Flow<List<ActivityEntity>>

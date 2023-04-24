@@ -131,7 +131,7 @@
             tools:text="R$ 8,50" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_giv_up"
+            android:id="@+id/button_give_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -150,9 +150,9 @@
             android:layout_height="wrap_content"
             android:text="@string/text_button_finished"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/button_giv_up"
+            app:layout_constraintBottom_toBottomOf="@+id/button_give_up"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_giv_up" />
+            app:layout_constraintTop_toTopOf="@+id/button_give_up" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

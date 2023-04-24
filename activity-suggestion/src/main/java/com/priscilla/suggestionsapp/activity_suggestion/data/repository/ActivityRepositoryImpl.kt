@@ -33,6 +33,12 @@ class ActivityRepositoryImpl(
         }
     }
 
+    override suspend fun update(activityModel: ActivityModel) {
+        mapModelToEntity.transform(activityModel).also {
+            activityDao.update(it)
+        }
+    }
+
     override fun getProgressAcitivity(): Flow<List<ActivityModel>> {
         return activityDao.getProgressActivity().map {
             mapEntityToModel.transform(it)
