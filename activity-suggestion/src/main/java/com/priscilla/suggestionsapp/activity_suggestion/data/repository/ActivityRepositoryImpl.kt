@@ -27,6 +27,12 @@ class ActivityRepositoryImpl(
         }
     }
 
+    override fun getType(): Flow<ActivityModel> {
+        return flow {
+            activityApi.getType(type = "")
+        }
+    }
+
     override suspend fun saveActivity(activityModel: ActivityModel) {
         mapModelToEntity.transform(activityModel).also {
             activityDao.saveActivity(it)
@@ -41,6 +47,12 @@ class ActivityRepositoryImpl(
 
     override fun getProgressAcitivity(): Flow<List<ActivityModel>> {
         return activityDao.getProgressActivity().map {
+            mapEntityToModel.transform(it)
+        }
+    }
+
+    override fun getFinishedAcitivity(): Flow<List<ActivityModel>> {
+        return activityDao.getFinishedActivity().map {
             mapEntityToModel.transform(it)
         }
     }

@@ -16,8 +16,13 @@ class ActivityViewModel(
     private var _stateActivityRandom = MutableStateFlow<ActivityState>(ActivityState.Empty)
     val stateActivityRandom: StateFlow<ActivityState> = _stateActivityRandom
 
-    private var _stateListProgressActivity = MutableStateFlow<ListActivityState>(ListActivityState.Empty)
+    private var _stateListProgressActivity =
+        MutableStateFlow<ListActivityState>(ListActivityState.Empty)
     val stateListProgressActivity: StateFlow<ListActivityState> = _stateListProgressActivity
+
+    private var _stateListFinishedActivity =
+        MutableStateFlow<ListActivityState>(ListActivityState.Empty)
+    val stateListFinishedActivity: StateFlow<ListActivityState> = _stateListFinishedActivity
 
     fun getActivity() {
         _stateActivityRandom.value = ActivityState.Loading
@@ -47,7 +52,19 @@ class ActivityViewModel(
     fun setActivityGiveUp(activityModel: ActivityModel) {
         try {
             viewModelScope.launch {
-                activityRepository.update(activityModel.copy(status = Status.STATUS_GIV_UP, endTime = Date()))
+                activityRepository.update(activityModel.copy(status = Status.STATUS_GIV_UP,
+                    endTime = Date()))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun setActivityFinished(activityModel: ActivityModel) {
+        try {
+            viewModelScope.launch {
+                activityRepository.update(activityModel.copy(status = Status.STATUS_FINISHED,
+                    endTime = Date()))
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -72,6 +89,23 @@ class ActivityViewModel(
         }
     }
 
+    fun getFinishedAcitivity() {
+        viewModelScope.launch {
+            _stateListFinishedActivity.value = ListActivityState.Loading
+            activityRepository.getFinishedAcitivity()
+                .catch { exception ->
+                    exception.printStackTrace()
+                    _stateListFinishedActivity.value =
+                        ListActivityState.Error("Ocorreu uma falha ao listar as atividades finalizadas")
+                }.collect {
+                    if (it.isEmpty()) {
+                        _stateListFinishedActivity.value = ListActivityState.Empty
+                    }
+                    _stateListFinishedActivity.value = ListActivityState.Success(it)
+                }
+        }
+    }
+
     sealed class ActivityState {
         class Success(val activityModel: ActivityModel) : ActivityState()
         class Error(val message: String) : ActivityState()
@@ -87,4 +121,5 @@ class ActivityViewModel(
         object Loaded : ListActivityState()
         object Empty : ListActivityState()
     }
+
 }

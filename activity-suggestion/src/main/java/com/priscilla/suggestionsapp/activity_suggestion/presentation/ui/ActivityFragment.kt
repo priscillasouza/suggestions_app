@@ -12,9 +12,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.priscilla.suggestionsapp.activity_suggestion.R
 import com.priscilla.suggestionsapp.activity_suggestion.databinding.FragmentActivityBinding
 import com.priscilla.suggestionsapp.activity_suggestion.domain.repository.model.ActivityModel
 import com.priscilla.suggestionsapp.activity_suggestion.extensions.formatCurrencyToBr
+import com.priscilla.suggestionsapp.activity_suggestion.presentation.adapter.ListFinishedActivitiesAdapter
 import com.priscilla.suggestionsapp.activity_suggestion.presentation.adapter.ListProgressActivityAdapter
 import com.priscilla.suggestionsapp.activity_suggestion.presentation.viewmodel.ActivityViewModel
 import com.priscilla.suggestionsapp.activity_suggestion.presentation.viewmodel.ActivityViewModel.ActivityState.*
@@ -25,6 +27,7 @@ class ActivityFragment : Fragment() {
 
     private lateinit var binding: FragmentActivityBinding
     private lateinit var listProgressActivityAdapter: ListProgressActivityAdapter
+    private lateinit var listFinishedActivityAdapter: ListFinishedActivitiesAdapter
     private val activityViewModel: ActivityViewModel by activityViewModel()
 
     override fun onCreateView(
@@ -39,8 +42,10 @@ class ActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activityViewModel.getActivity()
         activityViewModel.getProgressActivity()
+        activityViewModel.getFinishedAcitivity()
         onObserver()
         setAdpaterListProgressActivity()
+        setAdpaterListFinishedActivity()
     }
 
     private fun onObserver() {
@@ -65,7 +70,22 @@ class ActivityFragment : Fragment() {
                 stateListProgressActivity.collect {
                     when (it) {
                         is ActivityViewModel.ListActivityState.Loading -> showLoading(true)
-                        is ActivityViewModel.ListActivityState.Success -> listAdapterProgressActivity(it.listActivityModel)
+                        is ActivityViewModel.ListActivityState.Success -> listAdapterProgressActivity(
+                            it.listActivityModel)
+                        is ActivityViewModel.ListActivityState.Error -> showError(it.message)
+                        is ActivityViewModel.ListActivityState.Loaded -> showLoading(false)
+                        is ActivityViewModel.ListActivityState.Empty -> {}
+                        else -> {}
+                    }
+                }
+            }
+
+            lifecycleScope.launchWhenStarted {
+                stateListFinishedActivity.collect {
+                    when (it) {
+                        is ActivityViewModel.ListActivityState.Loading -> showLoading(true)
+                        is ActivityViewModel.ListActivityState.Success -> listAdapterFinishedActivity(
+                            it.listActivityModel)
                         is ActivityViewModel.ListActivityState.Error -> showError(it.message)
                         is ActivityViewModel.ListActivityState.Loaded -> showLoading(false)
                         is ActivityViewModel.ListActivityState.Empty -> {}
@@ -140,7 +160,10 @@ class ActivityFragment : Fragment() {
             listProgressActivityAdapter = ListProgressActivityAdapter()
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = listProgressActivityAdapter
-            listProgressActivityAdapter.setOnClickButtonGivUp {
+            listProgressActivityAdapter.onClickButtonFinished {
+                activityViewModel.setActivityFinished(activityModel = it)
+            }
+            listProgressActivityAdapter.onClickButtonGiveUp {
                 activityViewModel.setActivityGiveUp(activityModel = it)
             }
         }
@@ -148,5 +171,18 @@ class ActivityFragment : Fragment() {
 
     private fun listAdapterProgressActivity(list: List<ActivityModel>) {
         listProgressActivityAdapter.setList(list)
+    }
+
+    private fun setAdpaterListFinishedActivity() {
+        binding.recyclerViewFinishedActivities.apply {
+            listFinishedActivityAdapter = ListFinishedActivitiesAdapter()
+            layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = listFinishedActivityAdapter
+        }
+    }
+
+    private fun listAdapterFinishedActivity(listFinished: List<ActivityModel>) {
+        listFinishedActivityAdapter.setList(listFinished)
     }
 }

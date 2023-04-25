@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_item_list_progress_activity"
+    android:id="@+id/card_item_list_finished_activity"
     android:layout_width="340dp"
     android:layout_height="180dp"
     android:layout_marginEnd="8dp"
@@ -91,30 +91,29 @@
             tools:text="1" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_start_time"
+            android:id="@+id/text_view_spent_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
+            android:layout_marginStart="76dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:text="@string/text_start_time"
+            android:text="@string/text_spend_time"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/text_view_participants_label"
             app:layout_constraintStart_toEndOf="@id/text_view_participants_label"
-            app:layout_constraintTop_toTopOf="@id/text_view_participants_label"
-            app:layout_constraintVertical_bias="0.625" />
+            app:layout_constraintTop_toTopOf="@id/text_view_participants_label" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_start_time_label"
+            android:id="@+id/text_view_spent_time_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_start_time"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_spent_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.947"
-            app:layout_constraintStart_toEndOf="@+id/text_view_start_time"
-            app:layout_constraintTop_toTopOf="@+id/text_view_start_time"
+            app:layout_constraintStart_toEndOf="@+id/text_view_spent_time"
+            app:layout_constraintTop_toTopOf="@+id/text_view_spent_time"
             app:layout_constraintVertical_bias="0.0"
             tools:text="12:30" />
 
@@ -128,30 +127,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_participants"
             tools:text="R$ 8,50" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_give_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:text="@string/text_button_giv_up"
-            app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_price"
-            app:layout_constraintEnd_toStartOf="@+id/button_finished"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/text_view_price"
-            app:layout_constraintTop_toTopOf="@+id/text_view_price"
-            app:layout_constraintVertical_bias="0.461" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_finished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_button_finished"
-            app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/button_give_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_give_up" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

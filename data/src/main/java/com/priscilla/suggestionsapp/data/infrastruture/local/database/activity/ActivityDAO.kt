@@ -15,4 +15,7 @@ interface ActivityDAO {
 
     @Query("SELECT * FROM activity_table WHERE status = 'STATUS_PROGRESS'")
     fun getProgressActivity(): Flow<List<ActivityEntity>>
+
+    @Query("SELECT * FROM activity_table WHERE status = 'STATUS_FINISHED'")
+    fun getFinishedActivity(): Flow<List<ActivityEntity>>
 }

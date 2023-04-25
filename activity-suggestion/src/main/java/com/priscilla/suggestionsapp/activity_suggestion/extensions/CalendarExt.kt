@@ -17,8 +17,8 @@ fun Date.toString(stringFormat: String): String {
     return dateStringFormated
 }
 
-fun Date.differStartTime(): String {
-    val startDate = this
-    val differDate = Date(startDate.time)
+fun Date.differ(): String {
+    val firstDate = this
+    val differDate = Date(firstDate.time)
     return differDate.toString(FORMAT_HOUR)
 }

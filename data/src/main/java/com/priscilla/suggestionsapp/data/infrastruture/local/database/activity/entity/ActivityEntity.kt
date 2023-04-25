@@ -17,11 +17,12 @@ data class ActivityEntity(
     val key: String,
     val status: Status? = null,
     val startTime: Date? = null,
-    val endTime: Date? = null
+    val endTime: Date? = null,
+    val spentTime: Date? = null
 )
 
 enum class Status(val value: String) {
     STATUS_PROGRESS("andamento"),
     STATUS_GIV_UP("desistencia"),
-    STATUS_COMPLETED("realizada")
+    STATUS_FINISHED("realizada")
 }

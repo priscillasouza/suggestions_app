@@ -12,4 +12,6 @@ interface IActivityRepository {
     suspend fun update(activityModel: ActivityModel)
 
     fun getProgressAcitivity(): Flow<List<ActivityModel>>
+
+    fun getFinishedAcitivity(): Flow<List<ActivityModel>>
 }
