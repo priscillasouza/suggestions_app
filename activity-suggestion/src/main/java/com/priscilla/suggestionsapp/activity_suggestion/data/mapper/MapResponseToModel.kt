@@ -8,12 +8,12 @@ class MapResponseToModel {
     fun transform(response: ActivityResponse): ActivityModel {
         return ActivityModel(
             activity =  response.activity,
-            accessibility=  response.accessibility,
-            type=  response.type,
-            participants=  response.participants,
-            price=  response.price,
-            link=  response.link,
-            key=  response.key
+            accessibility =  response.accessibility,
+            type =  response.type,
+            participants =  response.participants,
+            price =  response.price,
+            link =  response.link,
+            key =  response.key
         )
     }
 }

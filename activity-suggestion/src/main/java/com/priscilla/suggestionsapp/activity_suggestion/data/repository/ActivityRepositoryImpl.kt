@@ -27,9 +27,11 @@ class ActivityRepositoryImpl(
         }
     }
 
-    override fun getType(): Flow<ActivityModel> {
+    override fun getTypeForActivity(type: String): Flow<ActivityModel> {
         return flow {
-            activityApi.getType(type = "")
+            activityApi.getType(type = type).let {
+                emit(mapResponseToModel.transform(it))
+            }
         }
     }
 
@@ -39,9 +41,9 @@ class ActivityRepositoryImpl(
         }
     }
 
-    override suspend fun update(activityModel: ActivityModel) {
+    override suspend fun updateActivity(activityModel: ActivityModel) {
         mapModelToEntity.transform(activityModel).also {
-            activityDao.update(it)
+            activityDao.updateActivity(it)
         }
     }
 

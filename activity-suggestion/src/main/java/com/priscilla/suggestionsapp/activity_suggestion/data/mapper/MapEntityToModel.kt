@@ -19,7 +19,8 @@ class MapEntityToModel: IMapper<ActivityEntity, ActivityModel> {
                 Status.valueOf(it)
             },
             startTime = activityEntity.startTime,
-            endTime = activityEntity.endTime
+            endTime = activityEntity.endTime,
+            spentTime = activityEntity.spentTime
         )
     }
 }

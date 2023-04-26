@@ -46,6 +46,21 @@ class ActivityFragment : Fragment() {
         onObserver()
         setAdpaterListProgressActivity()
         setAdpaterListFinishedActivity()
+        setClickChipsFilter()
+    }
+
+    private fun setClickChipsFilter() {
+        binding.apply {
+            chipEducation.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_education)) }
+            chipRecreational.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_recreational)) }
+            chipCooking.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_cooking)) }
+            chipBusywork.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_busywork)) }
+            chipDiy.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_diy)) }
+            chipSocial.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_social)) }
+            chipMusic.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_music)) }
+            chipRelaxation.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_relaxation)) }
+            chipCharity.setOnClickListener { activityViewModel.getTypeForActivity(getString(R.string.button_chip_charity)) }
+        }
     }
 
     private fun onObserver() {

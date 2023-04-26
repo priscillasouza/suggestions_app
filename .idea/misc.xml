@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/drawable/background_buttons_card.xml" value="0.17" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/drawable/background_chips.xml" value="0.1455" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/drawable/ic_link.xml" value="0.1285" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/layout/completed_activities_item.xml" value="0.22" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/layout/giv_up_activities_item.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/layout/progress_activities_item.xml" value="0.33" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/menu/app_bar_menu_list_product.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/prisc/Documents/Suggestions_App/activity-suggestion/src/main/res/menu/tool_bar_menu_filter_types.xml" value="0.3171875" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/app/src/main/res/drawable/backgroung_chips.xml" value="0.209" />
         <entry key="..\:/Users/prisc/Documents/Suggestions_App/app/src/main/res/layout/activity_main.xml" value="0.29010416666666666" />
       </map>

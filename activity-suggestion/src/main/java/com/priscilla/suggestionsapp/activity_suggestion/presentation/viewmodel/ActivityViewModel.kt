@@ -30,6 +30,20 @@ class ActivityViewModel(
             activityRepository.getActivity()
                 .catch { exception ->
                     exception.printStackTrace()
+                    _stateActivityRandom.value = ActivityState.Error("Ocorreu uma falha ao buscar uma atividade")
+                }.collect {
+                    _stateActivityRandom.value = ActivityState.Success(it)
+                }
+            _stateActivityRandom.value = ActivityState.Loaded
+        }
+    }
+
+    fun getTypeForActivity(type: String) {
+        _stateActivityRandom.value = ActivityState.Loading
+        viewModelScope.launch {
+            activityRepository.getTypeForActivity(type = type)
+                .catch { exception ->
+                    exception.printStackTrace()
                     _stateActivityRandom.value = ActivityState.Error("Ocorreu uma falha")
                 }.collect {
                     _stateActivityRandom.value = ActivityState.Success(it)
@@ -52,7 +66,7 @@ class ActivityViewModel(
     fun setActivityGiveUp(activityModel: ActivityModel) {
         try {
             viewModelScope.launch {
-                activityRepository.update(activityModel.copy(status = Status.STATUS_GIV_UP,
+                activityRepository.updateActivity(activityModel.copy(status = Status.STATUS_GIV_UP,
                     endTime = Date()))
             }
         } catch (e: Exception) {
@@ -63,8 +77,8 @@ class ActivityViewModel(
     fun setActivityFinished(activityModel: ActivityModel) {
         try {
             viewModelScope.launch {
-                activityRepository.update(activityModel.copy(status = Status.STATUS_FINISHED,
-                    endTime = Date()))
+                activityRepository.updateActivity(activityModel.copy(status = Status.STATUS_FINISHED,
+                    endTime = Date() ))
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -121,5 +135,4 @@ class ActivityViewModel(
         object Loaded : ListActivityState()
         object Empty : ListActivityState()
     }
-
 }

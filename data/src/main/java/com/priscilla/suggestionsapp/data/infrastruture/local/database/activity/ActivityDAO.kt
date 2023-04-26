@@ -11,7 +11,7 @@ interface ActivityDAO {
     fun saveActivity(activityEntity: ActivityEntity)
 
     @Update
-    fun update(activityEntity: ActivityEntity)
+    fun updateActivity(activityEntity: ActivityEntity)
 
     @Query("SELECT * FROM activity_table WHERE status = 'STATUS_PROGRESS'")
     fun getProgressActivity(): Flow<List<ActivityEntity>>

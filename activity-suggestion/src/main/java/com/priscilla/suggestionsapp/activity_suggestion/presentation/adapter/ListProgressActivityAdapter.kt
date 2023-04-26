@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.priscilla.suggestionsapp.activity_suggestion.databinding.ProgressActivitiesItemBinding
 import com.priscilla.suggestionsapp.activity_suggestion.domain.repository.model.ActivityModel
-import com.priscilla.suggestionsapp.activity_suggestion.extensions.differ
-import com.priscilla.suggestionsapp.activity_suggestion.extensions.formatCurrencyToBr
+import com.priscilla.suggestionsapp.activity_suggestion.extensions.*
 
 class ListProgressActivityAdapter :
     RecyclerView.Adapter<ListProgressActivityAdapter.ActivityViewHolder>() {
@@ -62,9 +61,10 @@ class ListProgressActivityAdapter :
                 textViewActivityAcessibilityLabel.text = activityModel.accessibility.toString()
                 textViewParticipantsLabel.text = activityModel.participants.toString()
                 textViewPrice.text = activityModel.price.formatCurrencyToBr()
-                textViewStartTimeLabel.text = activityModel.startTime?.differ()
+                textViewStartTimeLabel.text = activityModel.startTime?.toString(FORMAT_HOUR)
                 buttonGiveUp.setOnClickListener {
                     onClickButtonGivUp?.invoke(activityModel)
+                    activityModel.endTime?.toString(FORMAT_HOUR)
                 }
                 buttonFinished.setOnClickListener {
                     onClickButtonFinished?.invoke(activityModel)

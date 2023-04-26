@@ -1,12 +1,14 @@
 package com.priscilla.suggestionsapp.activity_suggestion.presentation.adapter
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.priscilla.suggestionsapp.activity_suggestion.databinding.FinishedActivitiesItemBinding
 import com.priscilla.suggestionsapp.activity_suggestion.domain.repository.model.ActivityModel
-import com.priscilla.suggestionsapp.activity_suggestion.extensions.formatCurrencyToBr
+import com.priscilla.suggestionsapp.activity_suggestion.extensions.*
 
 class ListFinishedActivitiesAdapter :
     RecyclerView.Adapter<ListFinishedActivitiesAdapter.ActivityViewHolder>() {
@@ -21,6 +23,7 @@ class ListFinishedActivitiesAdapter :
         return ActivityViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
         holder.onBind(finishedActivityList[position])
     }
@@ -42,6 +45,7 @@ class ListFinishedActivitiesAdapter :
         private val layout: FinishedActivitiesItemBinding,
     ) :
         RecyclerView.ViewHolder(layout.root) {
+        @RequiresApi(Build.VERSION_CODES.O)
         fun onBind(activityModel: ActivityModel) {
             layout.apply {
                 textViewActivityType.text = activityModel.type
@@ -49,7 +53,7 @@ class ListFinishedActivitiesAdapter :
                 textViewActivityAcessibilityLabel.text = activityModel.accessibility.toString()
                 textViewParticipantsLabel.text = activityModel.participants.toString()
                 textViewPrice.text = activityModel.price.formatCurrencyToBr()
-                textViewSpentTimeLabel.text = activityModel.spentTime?.toString()
+                textViewSpentTimeLabel.text = activityModel.endTime?.toString(FORMAT_HOUR)
             }
         }
     }

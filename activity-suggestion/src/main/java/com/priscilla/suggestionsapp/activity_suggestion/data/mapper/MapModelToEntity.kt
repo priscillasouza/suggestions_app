@@ -19,7 +19,8 @@ class MapModelToEntity {
                 Status.valueOf(it)
             },
             startTime = activityModel.startTime,
-            endTime = activityModel.endTime
+            endTime = activityModel.endTime,
+            spentTime = activityModel.spentTime
         )
     }
 }
