@@ -1,285 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="clip_vertical"
-    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".presentation.ui.ActivityFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="?attr/colorPrimaryVariant"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/text_tool_bar"
+            android:layout_height="wrap_content"
+            app:title="@string/text_title_app_bar"
+            app:titleCentered="true"
             app:titleTextColor="#FFFFFF" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tool_bar">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_education"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_education"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_recreational"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_recreational"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_cooking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_cooking"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_busywork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_busywork"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_diy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_diy"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_social"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_social"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_charity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_charity"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_music"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_music"
-                android:textColor="#E91E63" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_relaxation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_chip_relaxation"
-                android:textColor="#E91E63" />
-        </com.google.android.material.chip.ChipGroup>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_activity_suggestion"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_margin="16dp"
-            app:cardBackgroundColor="#CFCCCC"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chip_group">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_activity_type"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_education"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#E91E63"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="education" />
+                    android:text="@string/text_chip_education"
+                    android:textColor="#E91E63" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_activity_description"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_recreational"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_recreational"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_cooking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_cooking"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_busywork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_busywork"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_diy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_diy"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_social"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_social"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_charity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_charity"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_music"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_music"
+                    android:textColor="#E91E63" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_relaxation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_chip_relaxation"
+                    android:textColor="#E91E63" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_activity_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                app:cardBackgroundColor="#F5F1F1"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chip_group">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_activity_type"
-                    tools:text="Learn about a dsdfsdf sd fsdfs fsd fsdfd fsd fsd fsdfs fs f sdf sdsdfs df s dfs dfs dfs fsd f sdfs fdsf distributed version control system such as Git" />
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_activity_acessibility"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="@string/text_view_acessibility"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_activity_description" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_activity_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E91E63"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="education" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_activity_acessibility_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/text_view_participants"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.004"
-                    app:layout_constraintStart_toEndOf="@+id/text_view_activity_acessibility"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_activity_acessibility"
-                    tools:text="0,1" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_activity_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_view_activity_type"
+                        tools:text="Learn about a dsdfsdf sd fsdfs fsd fsdfd fsd fsd fsdfs fs f sdf sdsdfs df s dfs dfs dfs fsd f sdfs fdsf distributed version control system such as Git" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_participants"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="@string/text_view_participants"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_activity_acessibility" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_activity_acessibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/text_view_acessibility"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_view_activity_description" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_participants_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_view_participants"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.003"
-                    app:layout_constraintStart_toEndOf="@+id/text_view_participants"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_participants"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="1" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_activity_acessibility_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/text_view_participants"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.004"
+                        app:layout_constraintStart_toEndOf="@+id/text_view_activity_acessibility"
+                        app:layout_constraintTop_toTopOf="@+id/text_view_activity_acessibility"
+                        tools:text="0,1" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_participants"
-                    tools:text="R$ 8,50" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_participants"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/text_view_participants"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_view_activity_acessibility" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_reject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/text_button_reject"
-                    app:cornerRadius="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_view_price"
-                    app:layout_constraintEnd_toStartOf="@+id/button_accept"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/text_view_price"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_price"
-                    app:layout_constraintVertical_bias="0.461" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_participants_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_view_participants"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.003"
+                        app:layout_constraintStart_toEndOf="@+id/text_view_participants"
+                        app:layout_constraintTop_toTopOf="@+id/text_view_participants"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="1" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_accept"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_button_acept"
-                    app:cornerRadius="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_reject"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/button_reject" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_view_participants"
+                        tools:text="R$ 8,50" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/image_view_link"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_link"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_view_activity_type"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/text_view_activity_type"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_activity_type"
-                    app:layout_constraintVertical_bias="0.0" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_reject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/text_button_reject"
+                        android:textColor="#E91E63"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_view_price"
+                        app:layout_constraintEnd_toStartOf="@+id/button_accept"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_view_price"
+                        app:layout_constraintTop_toTopOf="@+id/text_view_price"
+                        app:layout_constraintVertical_bias="0.461" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_accept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_button_accept"
+                        android:textColor="#E91E63"
+                        app:layout_constraintBottom_toBottomOf="@+id/button_reject"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/button_reject" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_ongoing_activities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="@string/text_view_ongoing_activities"
-            android:textColor="#E91E63"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_activity_suggestion" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/image_view_link"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_link"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_view_activity_type"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/text_view_activity_type"
+                        app:layout_constraintTop_toTopOf="@+id/text_view_activity_type"
+                        app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_ongoing_activities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/text_view_ongoing_activities" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_completed_activities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="@string/text_view_completed_activities"
-            android:textColor="#E91E63"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_ongoing_activities" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_progress_activities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/text_view_ongoing_activities"
+                android:textColor="#E91E63"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_activity_suggestion" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_completed_activities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/text_view_completed_activities" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_list_progress_activities"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_progress_activities"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/progress_activities_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_completed_activities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/text_view_completed_activities"
+                android:textColor="#E91E63"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_list_progress_activities" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_finished_activities"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_completed_activities"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/progress_activities_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

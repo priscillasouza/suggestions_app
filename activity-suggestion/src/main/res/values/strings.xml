@@ -21,4 +21,14 @@
     <string name="text_button_giv_up">Desistir</string>
     <string name="text_start_time">Start time:</string>
     <string name="text_spend_time">Spend time:</string>
+    <string name="button_chip_education">education</string>
+    <string name="button_chip_recreational">recreational</string>
+    <string name="button_chip_cooking">cooking</string>
+    <string name="button_chip_busywork">busywork</string>
+    <string name="button_chip_diy">diy</string>
+    <string name="button_chip_social">social</string>
+    <string name="button_chip_music">music</string>
+    <string name="button_chip_relaxation">relaxation</string>
+    <string name="button_chip_charity">charity</string>
+    <string name="text_title_app_bar">Sugestões de atividades</string>
 </resources>
