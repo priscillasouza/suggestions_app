@@ -16,12 +16,11 @@ A aplicação foi dividida em 3 módulos:</br>
  * DATA - nesse modulo foi configurada a infraestrutura remota e local.</br>
  Remota: para fazer a conexão e coletar os dados da API foi utilizado o Retrofit.</br>
  Local: para armazenar os dados localmente foi utilizado o Room
- * ACTIVITY-SUGGESTION - configuração das camadas utilizando a arquitetura MVVM
-Onde foram implementados as funcionalidades do aplicativo.
+ * ACTIVITY-SUGGESTION - configuração das camadas utilizando a arquitetura MVVM</br>
+Onde foram implementadas as funcionalidades do aplicativo.
 
 **Gradle:**</br>
-O gradle foi configurado utilizando o version catalogs que centraliza as dependencias e versões em um unico arquivo e essas dependencias são chamdas no gradle de
-cada modulo de acordo com o que cada um precisa.
+O gradle foi configurado no módulo app utilizando o version catalogs, que centraliza as dependências e versões em um único arquivo e essas dependências são chamadas no gradle de cada módulo de acordo com o que cada um precisa.
 
 **Multicamada:**</br>
 Organização de código foi feita utilizando a arquitetura MVVM
@@ -30,27 +29,24 @@ Organização de código foi feita utilizando a arquitetura MVVM
  -Data: camada para dados de acesso integrado usando Repository
 
 **Databinding:**</br>
-Foi utilizado o databing pois é uma maneira fácil de controlar as regras da interface do usuário e facilita a ligação de dados na tela. Isso reduz a clichê de código grande e deixa as regras de visualização centralizadas.
+Foi utilizado o databing pois é uma maneira fácil de controlar as regras da interface do usuário e facilita a ligação de dados na tela.
 
 **Navigation:**</br>
-Foi criado gráfico de navegação no módulo activity-suggestion e esse gráfico foi incluído no gráfico de navegação do modulo app para rodar a aplicação com as informações. 
+Foi criado gráfico de navegação no módulo activity-suggestion e esse gráfico foi incluído no gráfico de navegação do módulo app para rodar a aplicação com as informações. 
 
 **Injeção de dependência:**</br>
 Foi utilizado o Koin, uma biblioteca prática de injeção de dependências, o código não será associado e ainda será fácil resolver automaticamente as dependências no tempo de execução.
 
 **Retrofit:**</br>
 O retrofit foi utilizado para fazer a conexão com a API disponibilizada.
-Utilizando o método GET foi realizada as chamadas das atividades(activity) e tipo de atividade(type).
+Utilizando o método GET foram realizadas as chamadas das atividades(activity) e tipo de atividade(type).
 
 **Room:**</br>
-O room database foi utilizado para salvar localmente os dados da atividade retornados da API e também para armazenar o status de progresso da atividade, a lista de 
-atividades em andamento e a lista de atividades finalizadas.
+O room database foi utilizado para salvar localmente os dados da atividade retornados da API e também para armazenar o status de progresso da atividade, a lista de atividades em andamento e a lista de atividades finalizadas.
 Ações:
- - Ao clicar no botão aceitar, atualizado o status para "em andamento", é armazenado o tempo inicial da atividade, e essa atividade é apresentada na lista da 
-recycler view de "atividades em andamento"
+ - Ao clicar no botão aceitar, atualizado o status para "em andamento", é armazenado o tempo inicial da atividade, e essa atividade é apresentada na lista da recycler view de "atividades em andamento"
  - Ao clicar no botão desistir, o status é atualizado para "desistencia", é armazenado o time do momento da desistência, e a atividade sai da lista da recycler view em andamento.
- - Ao clicar no botão finalizar, o status é atualizado para "finalizada", a atividade sai da lista da recycler view em andamento, e a atividade vai para
-a lista da recycler view de "atividades finalizadas" e é realizado o cálculo de tempo gasto na atividade.
+ - Ao clicar no botão finalizar, o status é atualizado para "finalizada", a atividade sai da lista da recycler view em andamento, e a atividade vai para a lista da recycler view de "atividades finalizadas" e é realizado o cálculo de tempo gasto na atividade.
 
 # Suggestion App
 Eu como usuário gostaria de ter um aplicativo que:
