@@ -1,8 +1,13 @@
 # suggestions_app
 Aplicativo que sugere atividades aleatórias para o usuário realizar.
+[APK](https://github.com/priscillasouza/suggestions_app/main/apk/app-suggestion.apk?raw=true) || [VIDEO](https://github.com/priscillasouza/suggestions_app/main/assets/videos/video.mp4?raw=true)
 
 **Screens**
 | **Home** |
+|--|--|--|
+| ![enter image description here](https://github.com/priscillasouza/suggestions_app/main/assets/images/img.png) |
+
+
 # Base do projeto
 **Multimodulos:**
 A aplicação foi dividida em 3 módulos:</br>
