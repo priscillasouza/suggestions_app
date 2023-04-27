@@ -3,7 +3,7 @@ Aplicativo que sugere atividades aleatórias para o usuário realizar.
 [APK](https://github.com/priscillasouza/suggestions_app/blob/main/apk/app-suggestion.apk?raw=true) || [YOUTUBE](https://youtu.be/N9RutrQsE4g)
 
 
-**Screens**
+**Screen**
 | **Home** |
 |--|
 | ![enter image description here](https://github.com/priscillasouza/suggestions_app/blob/main/assets/images/img.png) |
