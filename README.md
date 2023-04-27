@@ -23,10 +23,10 @@ Onde foram implementadas as funcionalidades do aplicativo.
 O gradle foi configurado no módulo app utilizando o version catalogs, que centraliza as dependências e versões em um único arquivo e essas dependências são chamadas no gradle de cada módulo de acordo com o que cada um precisa.
 
 **Multicamada:**</br>
-Organização de código foi feita utilizando a arquitetura MVVM
- -Presentation: camada para gerenciar o acesso inicial aos dados através do ViewModel
- -Domain: camada para gerenciar regras de negócios
- -Data: camada para dados de acesso integrado usando Repository
+Organização de código foi feita utilizando a arquitetura MVVM</br>
+ * Presentation: camada para gerenciar o acesso inicial aos dados através do ViewModel
+ * Domain: camada para gerenciar regras de negócios
+ * Data: camada para dados de acesso integrado usando Repository
 
 **Databinding:**</br>
 Foi utilizado o databing pois é uma maneira fácil de controlar as regras da interface do usuário e facilita a ligação de dados na tela.
