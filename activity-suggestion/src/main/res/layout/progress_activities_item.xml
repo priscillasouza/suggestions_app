@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_item_list_progress_activity"
+    android:layout_width="340dp"
+    android:layout_height="180dp"
+    android:layout_marginEnd="8dp"
+    app:cardBackgroundColor="#F5F1F1"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_activity_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#E91E63"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="education" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_activity_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_activity_type"
+            tools:text="Learn about a dsdfsdf sd fsdfs fsd fsdfd fsd fsd fsdfs fs f sdf sdsdfs df s dfs dfs dfs fsd f sdfs fdsf distributed version control system such as Git" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_activity_acessibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/text_view_acessibility"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_activity_description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_activity_acessibility_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_participants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.004"
+            app:layout_constraintStart_toEndOf="@+id/text_view_activity_acessibility"
+            app:layout_constraintTop_toTopOf="@+id/text_view_activity_acessibility"
+            tools:text="0,1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_participants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/text_view_participants"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_activity_acessibility" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_participants_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_participants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.003"
+            app:layout_constraintStart_toEndOf="@+id/text_view_participants"
+            app:layout_constraintTop_toTopOf="@+id/text_view_participants"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/text_start_time"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_participants_label"
+            app:layout_constraintStart_toEndOf="@id/text_view_participants_label"
+            app:layout_constraintTop_toTopOf="@id/text_view_participants_label"
+            app:layout_constraintVertical_bias="0.625" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_start_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_start_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintStart_toEndOf="@+id/text_view_start_time"
+            app:layout_constraintTop_toTopOf="@+id/text_view_start_time"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="12:30" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_participants"
+            tools:text="R$ 8,50" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_give_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/text_button_giv_up"
+            android:textColor="#E91E63"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_price"
+            app:layout_constraintEnd_toStartOf="@+id/button_finished"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/text_view_price"
+            app:layout_constraintTop_toTopOf="@+id/text_view_price"
+            app:layout_constraintVertical_bias="0.461" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_finished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_button_finished"
+            android:textColor="#E91E63"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_give_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_give_up" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
