@@ -100,9 +100,6 @@ Response:
 	"key": "5808228"
 }
 
-# Débitos técnicos
-Implementar o tempo gasto da atividade, entender melhor como lidar com conversões e cálculos com tipo Date.
-
 
 
 
